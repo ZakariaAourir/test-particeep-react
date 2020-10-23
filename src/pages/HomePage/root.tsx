@@ -13,12 +13,12 @@ function renderRoute({ key, path: routeUriPath, component: Component, ...rest }:
 
 const HomePage = () => {
     return (
-        <>
-            <ComponentHeader/>
-            <ComponentSubHeader />
-            <ComponentHome />
-            <Switch>{routes.map(route => renderRoute({ ...route }))}</Switch>
-        </>
+      <>
+        <ComponentHeader />
+        <ComponentSubHeader />
+        <ComponentHome />
+        <Switch>{routes.map((route) => renderRoute({ ...route }))}</Switch>
+      </>
     );
 };
 

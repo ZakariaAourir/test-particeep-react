@@ -5,7 +5,7 @@ import {sendDataToProfile} from "./action";
 
 const mapStateToProps = (state: any) => {
     return {
-        Jobs: JobsSelector(state),
+        jobs: JobsSelector(state),
     };
 };
 

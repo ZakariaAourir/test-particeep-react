@@ -16,7 +16,7 @@ import ComponentButton from "../ComponentButton";
 
 
 interface Props {
-    Jobs : any,
+    jobs: any;
     sendDataToProfile: (posted: any) => void;
 }
 
@@ -45,34 +45,35 @@ class BlockWrapper extends PureComponent<WithStyles<typeof styles> & any, State>
             ...this.state,
             postedJobs: posted,
         });
-        // const {sendDataToProfile} = this.props;
-        // sendDataToProfile(this.state.postedJobs)
+        const {sendDataToProfile} = this.props;
+        sendDataToProfile(this.state.postedJobs)
         // remove redux from here 
     }
     public render() {
-        const {Jobs} = this.props;
-        const totalJobs = Jobs.length;
+        const { classes, jobs } = this.props;
+        const totalJobs = jobs.length;
         const {currentPage, jobsPerPage} = this.state;
         const indexOfLastJob = currentPage * jobsPerPage;
         const indexOfFirstJob = indexOfLastJob - jobsPerPage;
-        const currentJobs = Jobs.slice(indexOfFirstJob, indexOfLastJob);
+        const currentJobs = jobs.slice(indexOfFirstJob, indexOfLastJob);
         const {paginate, postForJobs} = this;
-        return(
-            <ComponentHome
-                currentJobs = {currentJobs}
-                jobsPerPage= {jobsPerPage}
-                totalJobs ={totalJobs}
-                postForJobs={postForJobs}
-                paginate={paginate}
-                {...this.props}
-            />
-        )
+        return (
+          <ComponentHome
+            classes={classes}
+            jobs={jobs}
+            currentJobs={currentJobs}
+            jobsPerPage={jobsPerPage}
+            totalJobs={totalJobs}
+            postForJobs={postForJobs}
+            paginate={paginate}
+          />
+        );
     }
     
 }
 
 const ComponentHome = ({ classes, currentJobs, jobsPerPage, totalJobs, postForJobs, paginate }: any) => {
-    const Jobs = currentJobs.map((item:any) => {
+    const jobWrapper = currentJobs.map((item:any) => {
         return(
             <ComponentList key={item._id} className={classes.positionCards}>
                 <ComponentListitem>
@@ -104,13 +105,16 @@ const ComponentHome = ({ classes, currentJobs, jobsPerPage, totalJobs, postForJo
         )
     });
     return (
-        <div>
-            <div className={classes.positionInPage}>
-                {Jobs}
-                <Pagination jobsPerPage={jobsPerPage} totalJobs={totalJobs} paginate={paginate}/>
-            </div>
+      <div>
+        <div className={classes.positionInPage}>
+          {jobWrapper}
+          <Pagination
+            jobsPerPage={jobsPerPage}
+            totalJobs={totalJobs}
+            paginate={paginate}
+          />
         </div>
-        
+      </div>
     );
 };
 export default withStyles(styles)(BlockWrapper);
