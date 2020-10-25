@@ -34,8 +34,8 @@ In this platform i have used typescript.
 
 ### `Steps to work with project`
 
-`step 1`: Signup using any information and get message of confirmation with a dispatch of the data
-`step 2` : Enter `za@gmail.com` as email and `123` as password to get logged and get the acces to post for a job
-`step 3` : post for a job
-`step 4` : check profile to see the posted jobs
-`step 5` log out
+`step 1`: Signup using any information and get message of confirmation with a dispatch of the data<br />
+`step 2` : Enter `za@gmail.com` as email and `123` as password to get logged and get the acces to post for a job<br />
+`step 3` : post for a job<br />
+`step 4` : check profile to see the posted jobs<br />
+`step 5` log out<br />
