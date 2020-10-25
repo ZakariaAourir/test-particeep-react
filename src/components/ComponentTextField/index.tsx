@@ -2,11 +2,10 @@ import React, { FunctionComponent } from 'react';
 import classNames from 'classnames';
 import { WithStyles, withStyles } from '@material-ui/core';
 import TextField, { TextFieldProps } from '@material-ui/core/TextField';
-import { injectIntl } from 'react-intl';
 
 import styles from './styles';
 
-const CydTextField2: FunctionComponent<WithStyles<typeof styles> & any> = ({
+const ComponentTextField: FunctionComponent<WithStyles<typeof styles> & any> = ({
     children,
     classes,
     onChange,
@@ -45,4 +44,4 @@ const CydTextField2: FunctionComponent<WithStyles<typeof styles> & any> = ({
     );
 };
 
-export default withStyles(styles)(CydTextField2);
+export default withStyles(styles)(ComponentTextField);

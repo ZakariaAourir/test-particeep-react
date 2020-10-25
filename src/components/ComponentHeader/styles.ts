@@ -98,6 +98,9 @@ const registrationStyles: any = (theme: Theme) => ({
     },
     marginBetween: {
         marginRight: "80px",
+    },
+    zakaria: {
+        color: theme.palette.secondary.main
     }
 });
 

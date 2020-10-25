@@ -2,7 +2,7 @@ import { Route, Switch } from 'react-router-dom';
 import React from 'react';
 import ComponentHeader from "../../container/HeaderContainer";
 import ComponentSubHeader from "../../components/ComponentSubHeader";
-import ComponentProfile from "../../components/ComponentProfile";
+import ComponentProfile from "../../container/ProfileContainer";
 import routes from './routes';
 
 

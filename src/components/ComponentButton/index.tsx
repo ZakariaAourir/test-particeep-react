@@ -4,7 +4,7 @@ import { withStyles } from '@material-ui/core';
 import classNames from 'classnames';
 import styles from './styles';
 
-const CydButton = React.forwardRef((props: ButtonProps, ref: any) => {
+const ComponentButton = React.forwardRef((props: ButtonProps, ref: any) => {
     const { classes = {}, className, children = 'Button', ...rest } = props;
     return (
         <Button className={classNames(classes.root, className)} size="small" {...rest} ref={ref}>
@@ -13,4 +13,4 @@ const CydButton = React.forwardRef((props: ButtonProps, ref: any) => {
     );
 });
 
-export default withStyles(styles)(CydButton);
+export default withStyles(styles)(ComponentButton);

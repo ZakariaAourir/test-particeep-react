@@ -5,7 +5,7 @@ import {  Props } from './types';
 import styles from './styles';
 
 
-const CydTypography: FunctionComponent<WithStyles<typeof styles> & Props & any> = ({
+const ComponentTypography: FunctionComponent<WithStyles<typeof styles> & Props & any> = ({
     classes,
     className,
     children,
@@ -18,4 +18,4 @@ const CydTypography: FunctionComponent<WithStyles<typeof styles> & Props & any> 
 };
 
 
-export default withStyles(styles)(CydTypography);
+export default withStyles(styles)(ComponentTypography);

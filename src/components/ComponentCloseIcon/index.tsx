@@ -5,8 +5,8 @@ import styles from './styles';
 
 import classNames from 'classnames';
 
-const CydCloseIcon: FunctionComponent<WithStyles<typeof styles> & any> = ({ classes, className }) => {
+const ComponentCloseIcon: FunctionComponent<WithStyles<typeof styles> & any> = ({ classes, className }) => {
     return <CloseIcon className={classNames(classes.root, className)}></CloseIcon>;
 };
 
-export default withStyles(styles)(CydCloseIcon);
+export default withStyles(styles)(ComponentCloseIcon);

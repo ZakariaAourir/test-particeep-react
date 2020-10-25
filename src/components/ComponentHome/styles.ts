@@ -18,10 +18,10 @@ const registrationStyles: any = (theme: Theme) => ({
     },
     Image1: {
         flex: 1,
-        maxWidth : "100px",
-        maxHeight: "100px",
+        maxWidth : "12vh",
+        maxHeight: "12vh",
         borderRadius: "50%",
-        margin: "20px 50px",
+        margin: "1vh 2vh",
         borderStyle: "solid",
         borderWidth: "thin",
         borderColor: theme.palette.secondary.main,
@@ -29,7 +29,7 @@ const registrationStyles: any = (theme: Theme) => ({
     name: {
         fontSize: '2.1vh', 
         lineHeight: 'normal',
-        color: theme.palette.primary.main
+        color: "#34699D"
     },
     jobDescription: {
         display: "grid",
@@ -87,7 +87,17 @@ const registrationStyles: any = (theme: Theme) => ({
         positionButton: {
             marginTop: "10px",
             color: "#0097E5"
+        },
+        colored :{
+            backgroundColor: "#3BD769",
         }
+    },
+    positionTrier: {
+        color: theme.palette.secondary.main,
+    },
+    trier: {
+        marginLeft: "133vh",
+        marginBottom: "-1vh"
     }
 });
 

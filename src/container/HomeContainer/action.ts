@@ -1,4 +1,3 @@
-
 export const updateData = (posted:any) => ({
     type: 'SEND_TO_PROFILE',
     posted,

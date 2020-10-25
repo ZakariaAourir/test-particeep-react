@@ -11,6 +11,7 @@ function renderRoute({ key, path: routeUriPath, component: Component, ...rest }:
     return <Route exact path={`${routeUriPath}`} key={key} render={props => <Component {...props} {...rest} />} />;
 }
 
+// this component we import all the components needed for the home page
 const HomePage = () => {
     return (
       <>

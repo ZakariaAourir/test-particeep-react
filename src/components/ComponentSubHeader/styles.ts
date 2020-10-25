@@ -5,7 +5,7 @@ const registrationStyles: any = (theme: Theme) => ({
         marginTop: "75px",
         width: "100%",
         height: 180,
-        position: "fixed",
+        position: "absolute",
     },
     offers: {
         flex: 1,

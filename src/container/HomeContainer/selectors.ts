@@ -10,16 +10,16 @@ const requestOption = {
   },
 };
 axios(requestOption).then(res => {
-  DEFAULT_STATE.API = res.data;
+  DEFAULT_STATE.jobs = res.data;
 });
 export const DEFAULT_STATE = {
-    API: [  
+    jobs: [  
     ]
 };
 
 // do this in the service result of the service in reducer
-const getStateSelector = (globalState: any) => globalState.JobInfo;
+const getStateSelector = (globalState: any) => globalState.ProfileInfo;
 export const JobsSelector = createSelector(
     getStateSelector,
-    (state: any) => (state ? state.API : DEFAULT_STATE.API),
+    (state: any) => (state ? state.jobs : DEFAULT_STATE.jobs),
 );

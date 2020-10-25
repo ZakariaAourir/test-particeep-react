@@ -6,6 +6,7 @@ import {sendDataToProfile} from "./action";
 const mapStateToProps = (state: any) => {
     return {
         jobs: JobsSelector(state),
+        AuthSuccess: localStorage.getItem("jwt"),
     };
 };
 

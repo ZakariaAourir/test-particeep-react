@@ -4,7 +4,7 @@ import CardMedia, { CardMediaProps } from '@material-ui/core/CardMedia';
 import classNames from 'classnames';
 import styles from './styles';
 
-const CydCardmedia: FunctionComponent<WithStyles<typeof styles> & CardMediaProps> = ({ classes, className, image, children, ...rest }) => {
+const ComponentCardmedia: FunctionComponent<WithStyles<typeof styles> & CardMediaProps> = ({ classes, className, image, children, ...rest }) => {
     return (
         <CardMedia className={classNames(classes.root, className)} image={image}>
             {children}
@@ -12,4 +12,4 @@ const CydCardmedia: FunctionComponent<WithStyles<typeof styles> & CardMediaProps
     );
 };
 
-export default withStyles(styles)(CydCardmedia);
+export default withStyles(styles)(ComponentCardmedia);

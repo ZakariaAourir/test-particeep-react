@@ -1,4 +1,4 @@
-import React, { Component, PureComponent } from 'react';
+import React, { PureComponent } from 'react';
 import { withStyles, WithStyles } from '@material-ui/core';
 import styles from './styles';
 import ComponentModal from '../ComponentModal';
@@ -13,12 +13,13 @@ import { HOME } from '../../utils/constantes';
 
 
 
-
+// interface for the props
 interface Props {
     otherProps: any;
     updateDataFromInputsLogin: (email: any, password: any) => void;
 }
 
+// interface for the state
 interface State {
     modalOpened: boolean;
     email: any;
@@ -32,7 +33,7 @@ class BlockWrapper extends PureComponent<WithStyles<typeof styles> & Props, Stat
         email: '',
         password: '',
     };
-
+    // function that handles the close of the model
     private handleClose = () => {
         this.setState({
             ...this.state,
@@ -40,6 +41,7 @@ class BlockWrapper extends PureComponent<WithStyles<typeof styles> & Props, Stat
         });
         history.push("/");
     };
+    // handles the submission of the form
     private handleSubmit = (e:any) => {
         e.preventDefault();
         console.log(this.state);
@@ -49,11 +51,13 @@ class BlockWrapper extends PureComponent<WithStyles<typeof styles> & Props, Stat
         history.push('/');
         window.alert(email + 'Est connecte');
     };
+    //handles the email changes
     private handleChangeEmail = (e:any) => {
         this.setState({
             email: e.target.value,
         });
     };
+    // handles the password changes
     private handleChangePassword = (e:any) => {
         this.setState({
             password: e.target.value,
@@ -80,7 +84,6 @@ const Login = ({ classes, opened, handleClose, handleSubmit, handleChangeEmail, 
     return (
         <div>
             <ComponentModal opened={opened}>
-                {/* <button onClick={handleClose}>remove</button> */}
                 <div className={classes.box}>
                     <ComponentNavLink to={HOME} className={classes.btn} onClick={handleClose}>
                         <ComponentCloseIcon />

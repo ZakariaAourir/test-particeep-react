@@ -13,12 +13,12 @@ import { HOME } from '../../utils/constantes';
 
 
 
-
+// interface for the props
 interface Props {
     otherProps: any;
     updateDataFromInputsSignup: (name: any, email: any, password: any) => void;
 }
-
+// interface for the component state
 interface State {
     modalOpened: boolean;
     email: any;
@@ -33,9 +33,8 @@ class BlockWrapper extends PureComponent<WithStyles<typeof styles> & Props, Stat
         email: "",
         name: "",
         password: "",
-        
     };
-
+    // handles the close of the modal
     private handleClose = () => {
         this.setState({
             ...this.state,
@@ -43,6 +42,7 @@ class BlockWrapper extends PureComponent<WithStyles<typeof styles> & Props, Stat
         });
         history.push("/");
     };
+    // handles the submission of the form
     private handleSubmit = (e:any) => {
         e.preventDefault();
         const { name, email, password } = this.state;
@@ -51,16 +51,19 @@ class BlockWrapper extends PureComponent<WithStyles<typeof styles> & Props, Stat
         history.push('/');
         window.alert(name + 'Est inscrit avec succès');
     };
+    // handles the changes of the email
     private handleChangeEmail = (e:any) => {
         this.setState({
             email: e.target.value,
         });
     };
+    // handles the password changes
     private handleChangePassword = (e:any) => {
         this.setState({
             password: e.target.value,
         })
     };
+    // handles the name changes
     private handleChangeName = (e:any) => {
         this.setState({
             name: e.target.value,

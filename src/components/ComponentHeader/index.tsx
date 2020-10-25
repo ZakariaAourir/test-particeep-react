@@ -7,25 +7,26 @@ import ComponentCardmedia from "../ComponentCardmedia";
 import { HOME, LOGIN, SIGNUP } from '../../utils/constantes';
 import Slogan from "../../images/Slogan.png";
 import ComponentTypography from '../ComponentTypography';
-import {history} from "../../store.config";
-import { Home } from '@material-ui/icons';
 
 
-
+// interface to created state for the component
 interface State {
     openLoginModal: boolean;
 }
 
+// component for the login and connection with container
 class BlockWrapper extends PureComponent<any, State> {
     public state: State = {
         openLoginModal: false,
     };
+    // function for open model of the Auth components
     private openLoginComponent = () => {
         this.setState({
             ...this.state,
             openLoginModal: true,
         });
     };
+    // function that simulates logout
     private resetAuthSuccess = () => {
        localStorage.clear();
     };
@@ -57,7 +58,7 @@ const ComponentHeader = ({ classes, openLoginComponent, resetAuthSuccess, AuthSu
                           AuthSuccess ? (
                             <div className={classes.AppbarStyleRight}>
                                 <ComponentNavLink to={HOME} onClick={resetAuthSuccess}>
-                                    <ComponentTypography color="primary-text" weight="bold">Bonjour </ComponentTypography>
+                                    <ComponentTypography color="primary-text" weight="bold">Bonjour <span className={classes.zakaria}>Zakaria Aourir</span></ComponentTypography>
                                 </ComponentNavLink>
                             </div>
                           ) : (
@@ -71,8 +72,7 @@ const ComponentHeader = ({ classes, openLoginComponent, resetAuthSuccess, AuthSu
                                 </ComponentNavLink>
                             </div>
                           )
-                        }
-                        
+                        }   
                     </Grid>    
                 </ComponentAppBar>
             </Grid>

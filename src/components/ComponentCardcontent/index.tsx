@@ -5,8 +5,8 @@ import CardContent from '@material-ui/core/CardContent';
 import classNames from 'classnames';
 import styles from './styles';
 
-const CydCardcontent: FunctionComponent<WithStyles<typeof styles> & CardProps> = ({ classes, className, children, ...rest }) => {
+const ComponentCardcontent: FunctionComponent<WithStyles<typeof styles> & CardProps> = ({ classes, className, children, ...rest }) => {
     return <CardContent className={classNames(classes.root, className)}>{children}</CardContent>;
 };
 
-export default withStyles(styles)(CydCardcontent);
+export default withStyles(styles)(ComponentCardcontent);

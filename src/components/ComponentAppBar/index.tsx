@@ -5,7 +5,7 @@ import { WithStyles, withStyles } from '@material-ui/core';
 import classNames from 'classnames';
 import styles from './styles';
 
-const CydAppBar: FunctionComponent<WithStyles<typeof styles> & AppBarProps> = ({ classes, children, position }) => {
+const ComponentAppBar: FunctionComponent<WithStyles<typeof styles> & AppBarProps> = ({ classes, children, position }) => {
     return (
         <div>
             <AppBar className={classNames(classes.root, position)}>
@@ -15,4 +15,4 @@ const CydAppBar: FunctionComponent<WithStyles<typeof styles> & AppBarProps> = ({
     );
 };
 
-export default withStyles(styles)(CydAppBar);
+export default withStyles(styles)(ComponentAppBar);

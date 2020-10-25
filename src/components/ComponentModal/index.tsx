@@ -5,7 +5,7 @@ import Props from './props';
 
 import classNames from 'classnames';
 
-const CydModal: FunctionComponent<WithStyles<typeof styles> & Props> = ({ classes, className, opened, handleClose, children }) => {
+const ComponentModal: FunctionComponent<WithStyles<typeof styles> & Props> = ({ classes, className, opened, handleClose, children }) => {
     return (
         <Modal
             className={classNames(classes.modal, className)}
@@ -24,4 +24,4 @@ const CydModal: FunctionComponent<WithStyles<typeof styles> & Props> = ({ classe
     );
 };
 
-export default withStyles(styles)(CydModal);
+export default withStyles(styles)(ComponentModal);
