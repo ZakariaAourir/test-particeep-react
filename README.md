@@ -19,14 +19,14 @@ This kind of architecture might be to much for this project but i wanted to do i
 
 The following paragraph, we will describe the main parts of our project :
 
-`components` : this folder contains the mains component that we have used to created our pages for example we have : button, typography : both used to build a Home component.
-`container` : this folder contains the redux part of the components, when we need to execute an action of simply get our data from the API.
-the container contains 5 main files : - `action` : where we define our action for the store - `index` : it's the entry point and the connection with the other pages - `container` : where we define the mapStateToProp and mapDispatchToProps - `reducer` : where define our reducer - `selector` : hadles the state and compute the result state combining the defaul state and our current state
-`pages` : this folder is where we regroupt our components to build pages
-`app.tsx` : here we defined our routes and apply them to the pages we have created.
-`index.tsx` : here is our root folder where i connected our store redux as well as the theme created for the mini website.
-`theme.ts`: here i defined the colors that i'll use in the styling of our components
-`utils` : here i have defined two files one is just to define the routes that we used and the other to combine the reducer of our store .
+`components` : this folder contains the mains component that we have used to created our pages for example we have : button, typography : both used to build a Home component.<br />
+`container` : this folder contains the redux part of the components, when we need to execute an action of simply get our data from the API.<br />
+the container contains 5 main files :<br /> - `action` : where we define our action for the store<br /> - `index` : it's the entry point and the connection with the other pages <br /> - `container` : where we define the mapStateToProp and mapDispatchToProps <br /> - `reducer` : where define our reducer <br /> - `selector` : hadles the state and compute the result state combining the defaul state and our current state<br />
+`pages` : this folder is where we regroupt our components to build pages<br />
+`app.tsx` : here we defined our routes and apply them to the pages we have created.<br />
+`index.tsx` : here is our root folder where i connected our store redux as well as the theme created for the mini website.<br />
+`theme.ts`: here i defined the colors that i'll use in the styling of our components<br />
+`utils` : here i have defined two files one is just to define the routes that we used and the other to combine the reducer of our store .<br />
 
 ### `Use of typescript`
 
