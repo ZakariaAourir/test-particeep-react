@@ -28,9 +28,12 @@ the container contains 5 main files :<br /> - `action` : Where we define our act
 `theme.ts`: Here, i defined the colors that i'll use in the styling of our components.<br />
 `utils` : We have here two files one is just to define the routes that we used and the other to combine the reducer of our store .<br />
 
-### `Use of typescript`
+### `Other dependencies`
 
-In this platform i have used typescript.
+-   In this platform i have used typescript.
+-   Used material ui to get more dynamic components
+-   Redux
+-   Router
 
 ### `Steps to work with project`
 
