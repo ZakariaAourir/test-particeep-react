@@ -26,7 +26,7 @@ the container contains 5 main files :<br /> - `action` : where we define our act
 `app.tsx` : here, we defined our routes and link them to the pages we have created.<br />
 `index.tsx` : this is our root folder where i connected our store redux as well as the theme created for the mini website.<br />
 `theme.ts`: here i defined the colors that i'll use in the styling of our components<br />
-`utils` : here i have defined two files one is just to define the routes that we used and the other to combine the reducer of our store .<br />
+`utils` : we have here two files one is just to define the routes that we used and the other to combine the reducer of our store .<br />
 
 ### `Use of typescript`
 
