@@ -27,18 +27,3 @@ the container contains 5 main files :<br /> - `action` : Where we define our act
 `index.tsx` : This is our root folder where i connected our store redux as well as the theme created for the mini website.<br />
 `theme.ts`: Here, i defined the colors that i'll use in the styling of our components.<br />
 `utils` : We have here two files one is just to define the routes that we used and the other to combine the reducer of our store .<br />
-
-### `Other dependencies`
-
--   In this platform i have used typescript.
--   Used material ui to get more dynamic components
--   Redux
--   Router
-
-### `Steps to work with project`
-
-`step 1`: Signup using any information and get message of confirmation with a dispatch of the data<br />
-`step 2` : Enter `za@gmail.com` as email and `123` as password to get logged and get the acces to post for a job<br />
-`step 3` : post for a job<br />
-`step 4` : check profile to see the posted jobs<br />
-`step 5` log out<br />

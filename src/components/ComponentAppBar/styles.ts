@@ -4,9 +4,8 @@ const styles: any = (theme: Theme) => ({
     root: {
         flex: 1,
         minHeight: '3rem',
-        height: "7.5em",
-        boxShadow: "none",
-        backgroundColor: theme.palette.secondary.contrastText,
+        boxShadow: "2 0 black",
+        backgroundColor: theme.palette.primary.main,
     },
 });
 

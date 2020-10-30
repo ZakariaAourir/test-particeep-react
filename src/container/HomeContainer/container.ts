@@ -1,17 +1,18 @@
 import { connect } from 'react-redux';
-import { JobsSelector } from './selectors';
+import { MoviesSelector } from './selectors';
 import ComponentHome from '../../components/ComponentHome/index';
-import {sendDataToProfile} from "./action";
+import {deleteMovie} from "./action";
 
 const mapStateToProps = (state: any) => {
+    console.log(state)
     return {
-        jobs: JobsSelector(state),
-        AuthSuccess: localStorage.getItem("jwt"),
+        movies: MoviesSelector(state),
+        selectedMovies: state,
     };
 };
 
 const mapDispatchToProps = {
-    sendDataToProfile,
+    deleteMovie,
 }
 
 export default connect(

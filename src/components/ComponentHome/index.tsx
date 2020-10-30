@@ -1,218 +1,127 @@
 import React, { PureComponent } from 'react';
 import styles from './styles';
-import {  Grid, WithStyles, withStyles } from '@material-ui/core';
+import {  Icon, WithStyles, withStyles } from '@material-ui/core';
 import ComponentCard from "../ComponentCard";
 import ComponentCardcontent from "../ComponentCardcontent";
-import Image4 from "../../images/image4.jpg";
-import ComponentList from "../ComponentList";
-import ComponentListitem from "../ComponentListitem";
 import Pagination from "./Pagination";
 import ComponentButton from "../ComponentButton";
+import ComponentCardmedia from '../ComponentCardmedia';
+import ComponentTypography from '../ComponentTypography';
 
 
 // interface for the props 
 interface Props {
-    jobs: any;
-    sendDataToProfile: (posted: any) => void;
+  deleteMovie: (id:any) => void;
+  movies: any;
+  selectedMovies:any;
 }
 
 // interface for the stte
 interface State {
-   currentPage: any;
-   jobsPerPage: any;
-   postedJobs : any;
-   clicked: boolean;
-   clickedValue: any;
-   sortedJobs: any;
-   sorted: boolean;
+  currentPage: any;
+  moviesPerPage: any;  
 }
 
 class BlockWrapper extends PureComponent<WithStyles<typeof styles> & any, State> {
-    public state: State = {
-       currentPage: 1,
-       jobsPerPage: 3,
-       postedJobs: [],
-       clicked: false,
-       clickedValue : "",
-       sortedJobs : [],
-       sorted: false,
+    
+  public state: State = {
+    currentPage: 1,
+    moviesPerPage: 3,
 
-    };
-    // function that handles pagination
-    private paginate = (pageNumber:any) => {
-        this.setState({
-            currentPage: pageNumber
-        })
-    };
-    // function that sends the posted jobs to the profile component
-    private postForJobs = (id:any) => {
-        const posted = this.state.postedJobs;
-        posted.push(id);
-        const {AuthSuccess} = this.props;
-        if(AuthSuccess === "Auth Success") {
-            this.setState({
-                ...this.state,
-                postedJobs: posted,
-                clicked: true,
-                clickedValue: id,
-            });
-            const {sendDataToProfile} = this.props;
-            sendDataToProfile(posted);
-        }
-        
-        
-    };
-    // function that handles sorting of the jobs
-    private sortAsc = () => {
-        const {jobs} = this.props;
-        const newJobsDateChanged = jobs.map((item:any) => {
-            const  newDateFormat = parseInt(item['createdAt'].match(/[1-9]/g).join(""))
-            item['createdAt'] = newDateFormat;
-            return item;
-        });
-        console.log(newJobsDateChanged);
-        const sortedJobs = newJobsDateChanged.sort((a:any, b:any) => {
-                return a.createdAt - b.createdAt;
-        });
-        this.setState({
-            ...this.state,
-            sortedJobs: sortedJobs,
-            sorted: true,
-        });
-    }
-    public render() {
-        const { classes, jobs, AuthSuccess } = this.props;
-        const totalJobs = jobs.length;
-        const {currentPage, jobsPerPage, clicked, postedJobs, clickedValue, sortedJobs, sorted} = this.state;
-        const indexOfLastJob = currentPage * jobsPerPage;
-        const indexOfFirstJob = indexOfLastJob - jobsPerPage;
-        const currentJobs = jobs.slice(indexOfFirstJob, indexOfLastJob);
-        const currentSortedJobs = sortedJobs.slice(indexOfFirstJob, indexOfLastJob);
-        const {paginate, postForJobs, sortAsc} = this;
-        return (
-          <ComponentHome
-            classes={classes}
-            jobs={jobs}
-            currentJobs={currentJobs}
-            jobsPerPage={jobsPerPage}
-            totalJobs={totalJobs}
-            postForJobs={postForJobs}
-            paginate={paginate}
-            clicked={clicked}
-            postedJobs={postedJobs}
-            clickedValue={clickedValue}
-            sortAsc={sortAsc}
-            currentSortedJobs={currentSortedJobs}
-            sorted={sorted}
-            AuthSuccess={AuthSuccess}
-          />
-        );
-    } 
+  };
+  private paginate = (pageNumber:any) => {
+    this.setState({
+        currentPage: pageNumber
+    })
+  };
+  private deleteMovie = (id:any) => {
+    const {deleteMovie} = this.props;
+    deleteMovie(id);
+    window.alert("Movie Deleted")
+  };
+  public render() {
+      const { classes , movies, selectedMovies} = this.props;
+      const totalMovies = movies.length;
+      const {currentPage, moviesPerPage} = this.state;
+      const indexOfLastMovie = currentPage * moviesPerPage;
+      const indexOfFirstMovie = indexOfLastMovie - moviesPerPage;
+      const currentMovies = movies.slice(indexOfFirstMovie, indexOfLastMovie);
+      const {paginate, deleteMovie} = this;
+      return (
+        <ComponentHome
+          classes={classes}
+          movies={movies}
+          totalMovies={totalMovies}
+          moviesPerPage={moviesPerPage}
+          paginate={paginate}
+          currentMovies={currentMovies}
+          deleteMovie={deleteMovie}
+
+        />
+      );
+  } 
 }
 
-const ComponentHome = ({ classes, currentJobs, jobsPerPage, totalJobs, postForJobs, paginate, clicked,clickedValue,sortAsc, currentSortedJobs, sorted,AuthSuccess }: any) => {
-    const jobWrapper = sorted ? (currentSortedJobs.map((item:any) => {
-        return(
-            <ComponentList key={item._id} className={classes.positionCards}>
-                <ComponentListitem>
-                    <ComponentCard className={classes.Jobs} classes={{ root: classes.card }}>
-                        <Grid container>
-                            <Grid item xs={12} sm={2}>
-                                <img src={Image4} alt="this is logo" className={classes.Image1}/>
-                            </Grid>
-                            <Grid item xs={12} sm={7}>
-                                <ComponentCardcontent className={classes.jobDescription}>
-                                    <span className={classes.name}>{item.name}</span>
-                                    <span className={classes.date}>Ajouté le {item.createdAt}</span>
-                                    <span className={classes.description}>{item.description}</span>
-                                </ComponentCardcontent>
-                            </Grid>
-                            <Grid item xs={12} sm={3}>
-                                <div className={classes.positionButton}>
-                                    {
-                                        clicked && item._id === clickedValue ?  
-                                        (
-                                            <ComponentButton color="primary" variant="contained" onClick={() => {postForJobs(item._id)}}>
-                                                <span>
-                                                    postulé
-                                                </span>
-                                            </ComponentButton>
-                                        ) : (
-                                            <ComponentButton color="secondary" variant="contained" onClick={() => {postForJobs(item._id)}}>
-                                                <span>
-                                                    postuler
-                                                </span>
-                                            </ComponentButton>
-                                        )
-                                    }
-                                </div>   
-                            </Grid>
-                        </Grid>
-                    </ComponentCard>
-                </ComponentListitem>
-            </ComponentList>
+const ComponentHome = ({ classes, movies, totalMovies,moviesPerPage,paginate,currentMovies,deleteMovie }: any) => {
+    const moviesList = movies.length ? (
+      currentMovies.map((movie:any) => {
+        console.log(movies);
+        return (
+          <div key={movie.id} className={classes.cardWrapper}>
+            <div>
+              <ComponentCard className={classes.root}>
+                  <ComponentCardmedia className={classes.cardMedia} image={movie.pic}/>
+                  <ComponentCardcontent>
+                    <div className={classes.fixOnContent}>
+                      <div>
+                        <div className={classes.title}> 
+                          <ComponentTypography color="primary" variant="fs_2_2" weight="semi-bold" >{movie.title}</ComponentTypography>
+                        </div>
+                        <div className={classes.category}>
+                          <ComponentTypography variant="comment" color="secondary">{movie.category}</ComponentTypography>
+                        </div>
+                      </div>
+                      <div className={classes.fixOnContent}> 
+                        <Icon className={classes.iconSvgDislike}>
+                          <svg className={classes.iconImg} id="Bold" xmlns="http://www.w3.org/2000/svg">
+                            <path d="m1.75 23h2.5c.965 0 1.75-.785 1.75-1.75v-11.5c0-.965-.785-1.75-1.75-1.75h-2.5c-.965 0-1.75.785-1.75 1.75v11.5c0 .965.785 1.75 1.75 1.75z"/><path d="m12.781.75c-1 0-1.5.5-1.5 3 0 2.376-2.301 4.288-3.781 5.273v12.388c1.601.741 4.806 1.839 9.781 1.839h1.6c1.95 0 3.61-1.4 3.94-3.32l1.12-6.5c.42-2.45-1.46-4.68-3.94-4.68h-4.72s.75-1.5.75-4c0-3-2.25-4-3.25-4z"/>
+                          </svg>
+                        </Icon>
+                        <div className={classes.dislike}>
+                          <ComponentTypography color="secondary" className={classes.disLike}>{movie.dislikes}</ComponentTypography>  
+                        </div>
+                      </div>
+                      <div className={classes.fixOnContent}> 
+                        <Icon className={classes.iconSvg}>
+                          <svg className={classes.iconImgDislike} id="Bold" xmlns="http://www.w3.org/2000/svg">
+                            <path d="m22.25 1h-2.5c-.965 0-1.75.785-1.75 1.75v11.5c0 .965.785 1.75 1.75 1.75h2.5c.965 0 1.75-.785 1.75-1.75v-11.5c0-.965-.785-1.75-1.75-1.75z"/><path d="m5.119.75c-1.95 0-3.61 1.4-3.94 3.32l-1.12 6.5c-.42 2.45 1.46 4.68 3.94 4.68h4.72s-.75 1.5-.75 4c0 3 2.25 4 3.25 4s1.5-.5 1.5-3c0-2.376 2.301-4.288 3.781-5.273v-12.388c-1.601-.741-4.806-1.839-9.781-1.839z"/>
+                          </svg>
+                        </Icon>
+                        <div className={classes.like}>
+                          <ComponentTypography color="secondary" className={classes.disLike}>{movie.likes}</ComponentTypography>
+                        </div>
+                      </div>
+                    </div>
+                    {/* <div>
+                      
+                    </div> */}
+                    <ComponentButton variant="outlined" onClick={() => {deleteMovie(movie.id)}}>Delete</ComponentButton>
+                  </ComponentCardcontent>
+              </ComponentCard>
+            </div>
+          </div>
         )
-    })) : (
-        currentJobs.map((item:any) => {
-            return(
-                <ComponentList key={item._id} className={classes.positionCards}>
-                    <ComponentListitem>
-                        <ComponentCard className={classes.Jobs} classes={{ root: classes.card }}>
-                            <Grid container>
-                                <Grid item xs={12} sm={2}>
-                                    <img src={Image4} alt="this is logo" className={classes.Image1}/>
-                                </Grid>
-                                <Grid item xs={12} sm={7}>
-                                    <ComponentCardcontent className={classes.jobDescription}>
-                                        <span className={classes.name}>{item.name}</span>
-                                        <span className={classes.date}>Ajouté le {item.createdAt}</span>
-                                        <span className={classes.description}>{item.description}</span>
-                                    </ComponentCardcontent>
-                                </Grid>
-                                <Grid item xs={12} sm={3}>
-                                    <div className={classes.positionButton}>
-                                        {
-                                            clicked && item._id === clickedValue ?  
-                                            (
-                                                <ComponentButton color="primary" variant="contained" onClick={() => {postForJobs(item._id)}}>
-                                                    <span>
-                                                        postulé
-                                                    </span>
-                                                </ComponentButton>
-                                            ) : (
-                                                <ComponentButton color="secondary" variant="contained" onClick={() => {postForJobs(item._id)}}>
-                                                    <span>
-                                                        postuler
-                                                    </span>
-                                                </ComponentButton>
-                                            )
-                                        }
-                                    </div>   
-                                </Grid>
-                            </Grid>
-                        </ComponentCard>
-                    </ComponentListitem>
-                </ComponentList>
-            )
-        })
+      })
+    ) : (
+      <div> No movies</div>
     )
     return (
-      <div>
-        <div className={classes.positionInPage}>
-            <div className={classes.trier}>
-                <ComponentButton onClick={sortAsc}>
-                    <span className={classes.positionTrier}>
-                        Trier par date d'ajout asc 
-                    </span>   
-                </ComponentButton>
-            </div>
-            {jobWrapper}
-            <Pagination
-                jobsPerPage={jobsPerPage}
-                totalJobs={totalJobs}
-                paginate={paginate}
-            />
-        </div>
+      <div className={classes.moviesContainer}>
+          <div className={classes.positionCards}>
+            {moviesList}
+          </div>
+          <Pagination totalMovies={totalMovies} moviesPerPage={moviesPerPage} paginate={paginate} />
+      
       </div>
     );
 };

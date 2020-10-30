@@ -1,25 +1,17 @@
-import { ConnectedRouter, connectRouter } from 'connected-react-router';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { ThemeProvider } from '@material-ui/styles';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import store, { history } from './store.config';
-import { injectAsyncReducer } from './utils/asyncInjectors';
+import store from './store.config';
 import theme from './theme';
-
-injectAsyncReducer({
-    router: connectRouter(history),
-});
 
 ReactDOM.render(
     <Provider store={store}>
-       <ConnectedRouter history={history}>
-            <ThemeProvider theme={theme}>
-                 <App />
-            </ThemeProvider>,
-        </ConnectedRouter>
+        <ThemeProvider theme={theme}>
+                <App />
+        </ThemeProvider>
      </Provider>,
     document.getElementById('root'),
 );

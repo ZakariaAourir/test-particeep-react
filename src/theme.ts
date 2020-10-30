@@ -3,11 +3,11 @@ import { createMuiTheme } from '@material-ui/core/styles';
 const theme: any = {
     palette: {
         primary: {
-            main: '#3BD769',
-            contrastText: '#1D2236',
+            main: '#FF5047',
+            contrastText: 'FFFFFF',
         },
         secondary: {
-            main: '#0097E5',
+            main: '#1B0B33',
             contrastText: '#FCFCFC',
         },
     },

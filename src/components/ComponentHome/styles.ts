@@ -1,104 +1,112 @@
 import { Theme } from '@material-ui/core';
 
 const registrationStyles: any = (theme: Theme) => ({ 
-    Jobs: {
+    moviesContainer: {
+        marginTop: "10rem",
+    },
+    cardContainer: {
+        display: "inline-block",
+        width: '90%',
+        marginRight: 'auto',
+        marginLeft: 'auto',
+    },
+    root: {
         flex: 1,
-        marginTop: "2rem",
-        display: "flex",
-        maxWidth: "70%",
-        minHeight: "15%",
-        marginLeft: "28rem",
+        minWidth: '42vh',
+        minHeight: '35vh',
+        borderRadius: '5px',
+        boxShadow: '0 1px 4px 0 #dedcdb',
+        backgroundColor: 'rgba(246, 233, 230, 0.25)',   
     },
-    card: {
-        borderRadius: "8px",
-        borderStyle: "solid",
-        borderColor: "#979797",
-        borderWidth: "medium",
-        boxShadow: "none",
+    cardMedia: {
+        flex:1,
+        minWidth: '42vh',
+        minHeight: '18vh',
+        borderRadius: '5px',
     },
-    Image1: {
-        flex: 1,
-        maxWidth : "12vh",
-        maxHeight: "12vh",
-        borderRadius: "50%",
-        margin: "1vh 2vh",
-        borderStyle: "solid",
-        borderWidth: "thin",
-        borderColor: theme.palette.secondary.main,
+    cardWrapper: {
+        display: 'inline-block',
+        alignItems: 'center',
+        margin: '8rem 2rem',
     },
-    name: {
-        fontSize: '2.1vh', 
-        lineHeight: 'normal',
-        color: "#34699D"
-    },
-    jobDescription: {
-        display: "grid",
-        float: "left",
-    },
-    date: {
-        marginTop: "7px",
-        fontSize: '1.2vh', 
-        lineHeight: 'normal',
-        color: theme.palette.secondary.main,
-    },
-    description: {
-        color: "#767474",
-        marginTop: "10px",
-        fontSize: '1.4vh', 
-        lineHeight: 1.8,
-        wordSpacing: "5px",
-        fontWeight: 100
-    },
-    positionInPage: {
-        paddingTop: "32rem",
-    },
-    positionItems: {
-        marginTop: "2rem",
+    category: {
+        marginTop : "2px"
     },
     pagination: {
-        display: "flex",
-        fontSize: "large",
-        position: "relative",
-        float: "right",
-        listStyleType: "none",
-        marginTop: "1rem",
-        marginRight: "30rem"
-    },
-    linkPage: {
-        textDecoration: "none"
-    },
-    Box: {
-        width: "28px",
-        height: "26px",
-        margin: "3px",
-        borderRadius: "4px",
-        borderColor: "#767474",
-        backgroundColor: theme.palette.secondary.contrastText,
-        borderStyle: "solid",
-        borderWidth: "thin",
-        marginRight: "6px",
-        textAlign: "center",
-        marginTop: "4px",
-        color: "#767474",
-        "&:hover": {
-            backgroundColor: "#0097E5",
-            borderColor: "#0097E5",
-        },
-        positionButton: {
-            marginTop: "10px",
-            color: "#0097E5"
-        },
-        colored :{
-            backgroundColor: "#3BD769",
+        display: "inline-block",
+        padding: "6px 14px",
+        textDecoration: "none",
+        border: "1px solid #ddd",
+        color: "black",
+        "&:active": {
+            backgroundColor: "#4caf50",
+            border: "1px solid #4caf500",
+            color: "white"
         }
     },
-    positionTrier: {
+    positionCards: {
+        marginLeft: "25rem"
+    },
+    positionPagination: {
+        display: "inline-block",
+        fontSize: "large",
+        position: "relative",
+        listStyleType: "none",
+        marginTop: "1vh",
+        marginRight: "1vh"
+    },
+    positionWholePag: {
+        float: "right",
+        marginRight: "22vh",
+        marginTop: "-7vh"
+    },
+    iconImg: {
+        marginLeft: "3rem",
+        marginTop: "1rem",
         color: theme.palette.secondary.main,
     },
-    trier: {
-        marginLeft: "133vh",
-        marginBottom: "-1vh"
-    }
+    iconImgDislike: {
+        marginLeft: "3rem",
+        marginBottom: "-5px",
+        color: theme.palette.secondary.main,
+    },
+    iconSvg: {
+        textAlign: 'center',
+        fontSize: '3.2rem',
+        fill: theme.palette.secondary.main,
+        opacity: '0.6',
+        marginRight: "-26rem",
+        marginTop: "-10rem",
+        '&:hover': {
+            transition: '1.4s',
+            opacity: '1',
+        },
+    },
+    iconSvgDislike: {
+        textAlign: 'center',
+        fontSize: '3.2rem',
+        fill: theme.palette.secondary.main,
+        opacity: '0.6',
+        marginRight: "-26rem",
+        marginTop: "-7rem",
+        '&:hover': {
+            transition: '1.4s',
+            opacity: '1',
+        },     
+    },
+    titles: {
+        float: "left",
+    },
+    fixOnContent: {
+        display: "inline-block"
+    },
+    dislike: {
+        marginTop: "-15.7rem"
+    },
+    like: {
+        marginTop: "-15.7rem",
+        marginRight: "2rem",
+    } 
 });
 
 export default registrationStyles;

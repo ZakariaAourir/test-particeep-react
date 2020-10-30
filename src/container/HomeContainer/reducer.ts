@@ -3,15 +3,19 @@ import { DEFAULT_STATE } from './selectors';
 
 const reducers = (state: any = DEFAULT_STATE, action: AnyAction) => {
     switch (action.type) {
-        case 'SEND_TO_PROFILE':
+        case 'DELETE_MOVIE': {
+            var index = state.movies.findIndex((o:any) => {
+            return o.id === action.id;
+            })
+            if (index !== -1) state.movies.splice(index, 1);
             return {
                 ...state,
-                posted: action.posted,
             };
-
+        }
         default:
             return state;
     }
+   
 };
 
 export default reducers;

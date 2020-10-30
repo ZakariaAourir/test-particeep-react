@@ -6,7 +6,7 @@ const HomeLoader = Loadable({
     loader: async () => {
         const module = await import('./reducer');
         injectAsyncReducer({
-            JobInfo: module.default,
+            moviesInfo: module.default,
         });
         return import('./container');
     },

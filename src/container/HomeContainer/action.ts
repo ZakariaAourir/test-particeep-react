@@ -1,11 +1,11 @@
-export const updateData = (posted:any) => ({
-    type: 'SEND_TO_PROFILE',
-    posted,
+export const updateData = (id:any) => ({
+    type: "DELETE_MOVIE",
+    id,
 });
 
-export const sendDataToProfile = (posted:any) => async (dispatch: any) => {
+export const deleteMovie = (id:any) => async (dispatch: any) => {
     try {
-        dispatch(updateData(posted));
+        dispatch(updateData(id));
     } catch (error) {
         console.log('there is an error');
     }

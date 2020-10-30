@@ -2,27 +2,25 @@ import React from "react";
 import {  withStyles } from '@material-ui/core';
 import styles from "./styles";
 
-const Pagination = ({classes, jobsPerPage, totalJobs, paginate}) => {
+const Pagination = ({classes, moviesPerPage, totalMovies, paginate}) => {
     const pageNumbers = [];
-    for(let i = 1; i <= Math.ceil(totalJobs/jobsPerPage); i++){
+    for(let i = 1; i <= Math.ceil(totalMovies/moviesPerPage); i++){
         pageNumbers.push(i);
     };
     return(
-        <nav>
-            <ul className={classes.pagination}>
-                {
-                    pageNumbers.map(number => (
-                        <li key={number}>
-                            <a onClick={() => paginate(number)} href="#" className={classes.linkPage}>
-                                <div className={classes.Box}>
-                                    {number}
-                                </div>
-                            </a>
-                        </li>
-                    ))
-                }
-            </ul>
-        </nav>
+        <div className={classes.positionWholePag}>
+            {
+                pageNumbers.map(number => (
+                    <div key={number} className={classes.positionPagination}>
+                        <a onClick={() => paginate(number)} href="#" className={classes.pagination}>
+                            <div className={classes.Box}>
+                                {number}
+                            </div>
+                        </a>
+                    </div>
+                ))
+            }
+        </div>
     )
 };
 

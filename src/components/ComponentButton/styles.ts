@@ -31,9 +31,11 @@ const styles: any = (theme: Theme) => ({
         padding: ({ variant = 'text' }: ButtonProps) => paddings[variant],
         '&:hover': {
             border: ({ variant = 'text' }: ButtonProps) => borders[variant],
+            backgroundColor: theme.palette.primary.main,
+            color: '#dfeef0'
         },
         '&:disabled': {
-            backgroundColor: '#dfeef0 ',
+            backgroundColor: '#dfeef0',
             '& span': {
                 color: 'white',
             },
