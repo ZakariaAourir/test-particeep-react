@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { MoviesSelector } from './selectors';
 import ComponentHome from '../../components/ComponentHome/index';
-import {deleteMovie} from "./action";
+import {deleteMovie, addLikes, addDisLikes} from "./action";
 
 const mapStateToProps = (state: any) => {
     console.log(state)
@@ -13,6 +13,8 @@ const mapStateToProps = (state: any) => {
 
 const mapDispatchToProps = {
     deleteMovie,
+    addLikes,
+    addDisLikes,
 }
 
 export default connect(
