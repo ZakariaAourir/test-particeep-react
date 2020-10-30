@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import styles from './styles';
-import {  Icon, WithStyles, withStyles } from '@material-ui/core';
+import {  Checkbox, FormControl, Icon, Input, InputLabel, ListItemText, MenuItem, Select, WithStyles, withStyles } from '@material-ui/core';
 import ComponentCard from "../ComponentCard";
 import ComponentCardcontent from "../ComponentCardcontent";
 import Pagination from "./Pagination";
@@ -8,6 +8,17 @@ import ComponentButton from "../ComponentButton";
 import ComponentCardmedia from '../ComponentCardmedia';
 import ComponentTypography from '../ComponentTypography';
 
+
+const ITEM_HEIGHT = 48;
+const ITEM_PADDING_TOP = 8;
+const MenuProps = {
+  PaperProps: {
+    style: {
+      maxHeight: ITEM_HEIGHT * 4.5 + ITEM_PADDING_TOP,
+      width: 250,
+    },
+  },
+};
 
 // interface for the props 
 interface Props {
@@ -110,7 +121,7 @@ const ComponentHome = ({ classes, movies, totalMovies, moviesPerPage, paginate, 
                       </div>
                       <div className={classes.fixOnContent}>
                         {
-                          disLikeClicked ? (
+                          disLikeClicked? (
                             <Icon className={classes.iconSvgDislike}>
                               <svg className={classes.iconImg} id="Bold" xmlns="http://www.w3.org/2000/svg">
                                 <path d="m1.75 23h2.5c.965 0 1.75-.785 1.75-1.75v-11.5c0-.965-.785-1.75-1.75-1.75h-2.5c-.965 0-1.75.785-1.75 1.75v11.5c0 .965.785 1.75 1.75 1.75z"/><path d="m12.781.75c-1 0-1.5.5-1.5 3 0 2.376-2.301 4.288-3.781 5.273v12.388c1.601.741 4.806 1.839 9.781 1.839h1.6c1.95 0 3.61-1.4 3.94-3.32l1.12-6.5c.42-2.45-1.46-4.68-3.94-4.68h-4.72s.75-1.5.75-4c0-3-2.25-4-3.25-4z"/>
@@ -154,9 +165,6 @@ const ComponentHome = ({ classes, movies, totalMovies, moviesPerPage, paginate, 
                         </div>
                       </div>
                     </div>
-                    {/* <div>
-                      
-                    </div> */}
                     <ComponentButton variant="outlined" onClick={() => {deleteMovie(movie.id)}}>Delete</ComponentButton>
                   </ComponentCardcontent>
               </ComponentCard>
@@ -169,6 +177,26 @@ const ComponentHome = ({ classes, movies, totalMovies, moviesPerPage, paginate, 
     )
     return (
       <div className={classes.moviesContainer}>
+        <FormControl className={classes.formControl}>
+          <InputLabel id="demo-mutiple-checkbox-label">Tag</InputLabel>
+          <Select
+            labelId="demo-mutiple-checkbox-label"
+            id="demo-mutiple-checkbox"
+            // multiple
+            // value={personName}
+            // onChange={handleChange}
+            input={<Input />}
+            renderValue={(selected) => (selected as string[]).join(', ')}
+            MenuProps={MenuProps}
+          >
+            {movies.map((movie:any) => (
+              <MenuItem key={movie.id} value={movies.category}>
+                <Checkbox />
+                <ListItemText primary={movies.category} />
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
           <div className={classes.positionCards}>
             {moviesList}
           </div>

@@ -106,7 +106,14 @@ const registrationStyles: any = (theme: Theme) => ({
     like: {
         marginTop: "-15.7rem",
         marginRight: "2rem",
-    } 
+    },
+    formControl: {
+        marginLeft : "28vh",
+        width: "25vh",
+        marginBottom: "-10vh"
+
+    }
+
 });
 
 export default registrationStyles;
